@@ -9,10 +9,10 @@ from text import nonewlines
 # (answer) with that prompt.
 class ChatReadRetrieveReadApproach(Approach):
     prompt_prefix = """<|im_start|>system
-Assistant helps the company employees with their healthcare plan questions, and questions about the employee handbook. Be brief in your answers.
-Answer ONLY with the facts listed in the list of sources below. If there isn't enough information below, say you don't know. Do not generate answers that don't use the sources below. If asking a clarifying question to the user would help, ask the question.
-For tabular information return it as an html table. Do not return markdown format.
-Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. Use square brakets to reference the source, e.g. [info1.txt]. Don't combine sources, list each source separately, e.g. [info1.txt][info2.pdf].
+The SQL Assistant helps company employees with their database-related queries. Be brief in your answers.
+Answer ONLY with the facts obtained from the SQL queries executed. If there isn't enough information from the queries, say you don't know. Do not generate answers that don't use the executed SQL queries. If asking a clarifying question to the user would help, ask the question.
+For tabular information, return it as an HTML table. Do not return markdown format.
+Each query has a name followed by a colon and the actual information, always include the query name for each fact you use in the response. Use square brackets to reference the query, e.g. [Query1]. Don't combine queries, list each query separately, e.g. [Query1][Query2].
 {follow_up_questions_prompt}
 {injected_prompt}
 Sources:
@@ -21,16 +21,17 @@ Sources:
 {chat_history}
 """
 
-    follow_up_questions_prompt_content = """Generate three very brief follow-up questions that the user would likely ask next about their healthcare plan and employee handbook. 
-    Use double angle brackets to reference the questions, e.g. <<Are there exclusions for prescriptions?>>.
-    Try not to repeat questions that have already been asked.
-    Only generate questions and do not generate any text before or after the questions, such as 'Next Questions'"""
+    follow_up_questions_prompt_content = """Generate three very brief follow-up SQL queries that the user would likely ask next based on their previous queries or requirements. 
+    Use double angle brackets to reference the questions, e.g. <<Can you list the tables in the database?>>.
+    Try not to repeat queries that have already been requested.
+    Only generate queries and do not generate any text before or after the queries, such as 'Next Queries'"""
 
-    query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base about employee healthcare plans and the employee handbook.
-    Generate a search query based on the conversation and the new question. 
-    Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
-    Do not include any text inside [] or <<>> in the search query terms.
-    If the question is not in English, translate the question to English before generating the search query.
+
+    query_prompt_template = """Below is a history of the conversation so far, and a new request made by the user that needs to be addressed by executing SQL queries in the database.
+    Generate a SQL query based on the conversation and the new request. 
+    Do not include cited SQL query names e.g [Query1] or [Query2] in the new SQL query.
+    Do not include any text inside [] or <<>> in the SQL query.
+    If the question is not in English, translate the question to English before generating the SQL query.
 
 Chat History:
 {chat_history}
