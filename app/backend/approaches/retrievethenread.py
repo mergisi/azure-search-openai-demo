@@ -10,25 +10,19 @@ from text import nonewlines
 class RetrieveThenReadApproach(Approach):
 
     template = \
-"You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. " + \
-"Use 'you' to refer to the individual asking the questions even if they ask with 'I'. " + \
-"Answer the following question using only the data provided in the sources below. " + \
-"For tabular information return it as an html table. Do not return markdown format. "  + \
-"Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. " + \
-"If you cannot answer using the sources below, say you don't know. " + \
+"You are a SQL assistant helping users with their SQL and database questions. Use your expertise to answer the following question based on the sources provided. Include the source name for each fact you use in your response. If you cannot answer using the sources below, say you don't know. " + \
 """
 
 ###
-Question: 'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
+Question: 'What is the difference between INNER JOIN and OUTER JOIN in SQL?'
 
 Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+source1.txt: An INNER JOIN returns only the rows which have common values in both tables. An OUTER JOIN returns all the rows from one table and the matched rows from the second table. If no match is found, NULL values will be displayed for the second table.
+source2.pdf: INNER JOIN and OUTER JOIN are SQL operations used to combine data from two tables based on a related column between them.
+source3.pdf: There are three types of OUTER JOINs in SQL: LEFT OUTER JOIN, RIGHT OUTER JOIN, and FULL OUTER JOIN. LEFT OUTER JOIN returns all the rows from the left table and the matched rows from the right table. If no match is found, NULL values will be displayed for the right table. The RIGHT OUTER JOIN and FULL OUTER JOIN work symmetrically for the right table and both tables, respectively.
 
 Answer:
-In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf].
+An INNER JOIN returns only the rows which have common values in both tables [source1.txt], while an OUTER JOIN returns all the rows from one table and the matched rows from the second table; If no match is found, NULL values will be displayed for the second table [source1.txt]. INNER JOIN and OUTER JOIN are operations used in SQL to combine data from two tables based on a related column between them [source2.pdf]. There are three types of OUTER JOINs: LEFT OUTER JOIN, RIGHT OUTER JOIN, and FULL OUTER JOIN [source3.pdf].
 
 ###
 Question: '{q}'?
