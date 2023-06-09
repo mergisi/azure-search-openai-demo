@@ -9,11 +9,13 @@ export type ExampleModel = {
 
 const EXAMPLES: ExampleModel[] = [
     {
-        text: "What is included in my Northwind Health Plus plan that is not in standard?",
-        value: "What is included in my Northwind Health Plus plan that is not in standard?"
+        text: "Retrieve all records from the Employees table",
+        value: "SELECT * FROM Employees;"
     },
-    { text: "What happens in a performance review?", value: "What happens in a performance review?" },
-    { text: "What does a Product Manager do?", value: "What does a Product Manager do?" }
+    {
+        text: "Update salary of an employee with ID 1 to 50000",
+        value: "UPDATE Employees SET salary = 50000 WHERE employee_id = 1;"
+    }
 ];
 
 interface Props {
