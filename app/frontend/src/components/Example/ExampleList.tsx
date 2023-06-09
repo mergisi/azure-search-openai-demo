@@ -9,12 +9,16 @@ export type ExampleModel = {
 
 const EXAMPLES: ExampleModel[] = [
     {
+        text: "Query all data from the 'employees' table where 'age' is greater than 30.",
+        value: "SELECT * FROM employees WHERE age > 30;"
+    },
+    {
         text: "Retrieve all records from the Employees table",
         value: "SELECT * FROM Employees;"
     },
     {
-        text: "Update salary of an employee with ID 1 to 50000",
-        value: "UPDATE Employees SET salary = 50000 WHERE employee_id = 1;"
+        text: "Find the total number of sales made by each 'salesperson' in the 'sales' table.",
+        value: "SELECT salesperson, COUNT(*) as total_sales FROM sales GROUP BY salesperson;"
     }
 ];
 
