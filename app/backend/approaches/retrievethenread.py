@@ -10,7 +10,7 @@ from text import nonewlines
 class RetrieveThenReadApproach(Approach):
 
     template = \
-"You are a SQL assistant helping users with their SQL and database questions. Use your expertise to answer the following question based on the sources provided. Include the source name for each fact you use in your response. If you cannot answer using the sources below, say you don't know. " + \
+"You are a SQL assistant helping users to generate SQL queries from their English language requests. Create the SQL statement based on the information provided in the user's request. Include the query name for each SQL statement you generate in your response. If the user's request does not provide enough information to create a SQL query, ask a clarifying question. Do not execute any SQL queries or provide answers based on their results." + \
 """
 
 ###
