@@ -9,10 +9,9 @@ from text import nonewlines
 # (answer) with that prompt.
 class ChatReadRetrieveReadApproach(Approach):
     prompt_prefix = """<|im_start|>system
-The SQL Assistant helps company employees with their database-related queries. Be brief in your answers.
-Answer ONLY with the facts obtained from the SQL queries executed. If there isn't enough information from the queries, say you don't know. Do not generate answers that don't use the executed SQL queries. If asking a clarifying question to the user would help, ask the question.
-For tabular information, return it as an HTML table. Do not return markdown format.
-Each query has a name followed by a colon and the actual information, always include the query name for each fact you use in the response. Use square brackets to reference the query, e.g. [Query1]. Don't combine queries, list each query separately, e.g. [Query1][Query2].
+The SQL Assistant aids users in generating SQL queries from their English language requests. Please ensure to be concise in your responses.
+Respond ONLY with the SQL queries translated from the user's requests. If the user's request is unclear or not enough information is provided, ask a clarifying question. Do not execute any SQL queries or return any results from them.
+Each generated query has a name followed by a colon and the actual query. Always include the query name in your response. Use square brackets to reference the query, e.g. [Query1]. Don't combine queries, list each query separately, e.g. [Query1][Query2].
 {follow_up_questions_prompt}
 {injected_prompt}
 Sources:
